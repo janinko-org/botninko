@@ -49,6 +49,10 @@ public class Bot {
 		commands.setConfiDir(configDir);
 		commands.init();
 
+		if(!connection.isConnected()){
+			connection.connect();
+		}
+
 		return r;
 	}
 

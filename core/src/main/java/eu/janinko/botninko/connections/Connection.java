@@ -198,6 +198,9 @@ public class Connection {
 		if(rooms.containsKey(room)) return rooms.get(room);
 		RoomImpl rc = new RoomImpl(this, room, nick);
 		rooms.put(room, rc);
+		if(connected){
+			rc.connect();
+		}
 		return rc;
 	}
 
