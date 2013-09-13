@@ -5,6 +5,18 @@ Bot for MultiUser Chat at XMPP protocol
 
 
 
+## Privs
+
+~/.xmppmuc/plugins/data/eu.janinko.botninko.plugins.core.Privset.xml
+```xml
+<map>
+  <entry>
+    <string>admin@email.org</string>
+    <int>100</int>
+  </entry>
+</map>
+```
+
 
 
 License
