@@ -16,6 +16,13 @@ public class Privset extends AbstractCommand {
 
 	public void setCommands(Commands c){
 		this.commands = c;
+
+        for (Map.Entry<String, Integer> e : privs.entrySet()) {
+            if (logger.isTraceEnabled()) {
+                logger.trace("Priv for " + e.getKey() + " set to " + e.getValue());
+            }
+            commands.privSet(e.getKey(), e.getValue());
+        }
 	}
 
     @Override
@@ -27,13 +34,6 @@ public class Privset extends AbstractCommand {
 			logger.warn("Privs file not found, creating empty privset.");
 			privs = new HashMap<>();
 		}
-
-        for (Map.Entry<String, Integer> e : privs.entrySet()) {
-            if (logger.isTraceEnabled()) {
-                logger.trace("Priv for " + e.getKey() + " set to " + e.getValue());
-            }
-            commands.privSet(e.getKey(), e.getValue());
-        }
     }
 
     @Override
