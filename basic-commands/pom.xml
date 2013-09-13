@@ -4,12 +4,12 @@
 
   <groupId>eu.janinko.botninko.plugins</groupId>
   <artifactId>basic-commands</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.0</version>
 
   <parent>
     <groupId>eu.janinko.botninko</groupId>
     <artifactId>botninko-parent</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
   </parent>
 
   <name>Botninko - basic commands</name>
@@ -21,16 +21,9 @@
       <version>1.0</version>
     </dependency>
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.10</version>
-      <scope>test</scope>
-      <type>jar</type>
-    </dependency>
-    <dependency>
       <groupId>eu.janinko.botninko</groupId>
       <artifactId>botninko-api</artifactId>
-      <version>1.0-SNAPSHOT</version>
+      <version>1.0</version>
     </dependency>
     <dependency>
       <groupId>log4j</groupId>
@@ -39,71 +32,4 @@
       <type>jar</type>
     </dependency>
   </dependencies>
-
-  <build>
-   <pluginManagement>
-      <plugins>
-        <plugin>
-          <groupId>org.codehaus.mojo</groupId>
-          <artifactId>findbugs-maven-plugin</artifactId>
-          <version>2.5.2</version>
-        </plugin>
-      </plugins>
-   </pluginManagement>
-
-   <plugins>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>findbugs-maven-plugin</artifactId>
-        <version>2.5.2</version>
-        <configuration>
-          <xmlOutput>true</xmlOutput>
-          <xmlOutputDirectory>target/site</xmlOutputDirectory>
-        </configuration>
-      </plugin>
-
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>2.5.1</version>
-        <configuration>
-          <source>1.7</source>
-          <target>1.7</target>
-          <encoding>UTF-8</encoding>
-        </configuration>
-      </plugin>
-
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-javadoc-plugin</artifactId>
-        <version>2.8.1</version>
-      </plugin>
-      
-      <plugin>
-        <artifactId>maven-site-plugin</artifactId>
-        <version>3.0</version>
-      </plugin>
-   </plugins>
-  </build>
-
-  <reporting>
-    <plugins>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>findbugs-maven-plugin</artifactId>
-        <version>2.5.2</version>
-        <configuration>
-          <xmlOutput>true</xmlOutput>
-          <xmlOutputDirectory>target/site</xmlOutputDirectory>
-        </configuration>
-      </plugin>
-
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-javadoc-plugin</artifactId>
-        <version>2.8.1</version>
-      </plugin>
-    </plugins>
-  </reporting>
-
 </project>
