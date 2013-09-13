@@ -1,16 +1,18 @@
 package eu.janinko.botninko;
 
-import eu.janinko.botninko.pluginsloaders.JarPluginsLoader;
 import com.thoughtworks.xstream.XStream;
 import eu.janinko.botninko.api.plugin.Plugin;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import org.apache.log4j.Logger;
 
 /**
  * @author Honza Brázdil <jbrazdil@redhat.com>
  */
 public class XMLStorage {
+	private static Logger logger = Logger.getLogger(XMLStorage.class);
 	protected final String dataPath;
 
 	protected String identifier;
@@ -24,13 +26,19 @@ public class XMLStorage {
 	}
 
 	public void save(Object o) throws IOException{
+		File outdir = new File(dataPath);
+		if(!outdir.exists()){
+			logger.info("Creating directory " + outdir.getAbsolutePath());
+			outdir.mkdirs();
+		}
 		FileWriter out = new FileWriter(dataPath + identifier + ".xml");
 		xstream.toXML(o, out);
 	}
 
 	public Object load() throws IOException{
-		FileReader out = new FileReader(dataPath + identifier + ".xml");
+		File in = new File(dataPath + identifier + ".xml");
+		if(!in.exists()) return null;
 
-		return xstream.fromXML(out);
+		return xstream.fromXML(new FileReader(in));
 	}
 }

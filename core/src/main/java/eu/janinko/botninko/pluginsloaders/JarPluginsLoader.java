@@ -36,6 +36,10 @@ public class JarPluginsLoader implements PluginsLoader {
 		logger.trace("Scanning pluginFolder");
 
 		File pluginDirectory = new File(pluginJarDir);
+		if(!pluginDirectory.exists()){
+			logger.info("Creating directory " + pluginDirectory.getAbsolutePath());
+			pluginDirectory.mkdirs();
+		}
 
 		ArrayList<URL> urls = new ArrayList<>();
 		for(File f : pluginDirectory.listFiles()){
