@@ -5,6 +5,8 @@ import eu.janinko.botninko.api.plugin.Plugin;
 import eu.janinko.botninko.api.plugin.Command;
 import eu.janinko.botninko.api.plugin.MessageHandler;
 import eu.janinko.botninko.api.plugin.PresenceHandler;
+import eu.janinko.botninko.plugins.core.PluginManagerCommand;
+import eu.janinko.botninko.plugins.core.Privset;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -14,7 +16,7 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import org.apache.log4j.Logger;
 
-class Plugins {
+public class Plugins {
 	private static Logger logger = Logger.getLogger(Plugins.class);
 	
 	private Commands commands;
@@ -57,10 +59,11 @@ class Plugins {
 		}
 		sb.delete(sb.length()-2,sb.length());
 		logger.info(sb.toString());
+		initCorePlugins();
 		return count;
 	}
 
-	boolean startPlugin(String identifier){
+	public boolean startPlugin(String identifier){
 		if(pluginClasses.containsKey(identifier)) return false;
 		Class<? extends Plugin> clazz = null;
 		for(PluginsLoader pl : pluginsLoaders){
@@ -103,7 +106,7 @@ class Plugins {
 		return true;
 	}
 
-	void stopPlugin(String binaryName){
+	public void stopPlugin(String binaryName){
 		CommandWrapper cw;
 		synchronized(this){
 			if(!pluginClasses.containsKey(binaryName)) return;
@@ -186,8 +189,25 @@ class Plugins {
 		return classLoader;
 	}
 
-	void reload() {
+	public void reload() {
 		throw new UnsupportedOperationException("Not yet implemented");
+	}
+
+	private void initCorePlugins() {
+		CommandWrapper privsetCW = pluginClasses.get("eu.janinko.botninko.plugins.core.Privset");
+		if(privsetCW == null){
+			logger.error("Couldn't load Privset command");
+		}else{
+			Privset p = (Privset) privsetCW.getPlugin();
+			p.setCommands(commands);
+		}
+		CommandWrapper pmcCW = pluginClasses.get("eu.janinko.botninko.plugins.core.PluginManagerCommand");
+		if(privsetCW == null){
+			logger.error("Couldn't load Plugin Manager command");
+		}else{
+			PluginManagerCommand pm = (PluginManagerCommand) pmcCW.getPlugin();
+			pm.setPlugins(this);
+		}
 	}
 
 

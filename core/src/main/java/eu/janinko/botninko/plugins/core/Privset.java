@@ -1,5 +1,6 @@
 package eu.janinko.botninko.plugins.core;
 
+import eu.janinko.botninko.Commands;
 import eu.janinko.botninko.api.CommandMessage;
 import eu.janinko.botninko.api.PluginHelper;
 import eu.janinko.botninko.api.plugin.AbstractCommand;
@@ -11,6 +12,11 @@ import org.apache.log4j.Logger;
 public class Privset extends AbstractCommand {
     Map<String, Integer> privs;
     private static Logger logger = Logger.getLogger(Privset.class);
+	private Commands commands;
+
+	public void setCommands(Commands c){
+		this.commands = c;
+	}
 
     @Override
     public void setPluginHelper(PluginHelper pluginHelper) {
@@ -26,7 +32,7 @@ public class Privset extends AbstractCommand {
             if (logger.isTraceEnabled()) {
                 logger.trace("Priv for " + e.getKey() + " set to " + e.getValue());
             }
-            ph.getCommands().privSet(e.getKey(), e.getValue());
+            commands.privSet(e.getKey(), e.getValue());
         }
     }
 
@@ -37,7 +43,7 @@ public class Privset extends AbstractCommand {
 
     @Override
     public int getPrivLevel() {
-        return 100;
+        return 0;
     }
 
     @Override
@@ -56,7 +62,7 @@ public class Privset extends AbstractCommand {
         }
 
 		privs.put(args[1], Integer.decode(args[2]));
-        ph.getCommands().privSet(args[1], Integer.decode(args[2]));
+        commands.privSet(args[1], Integer.decode(args[2]));
 		String message = "Práva pro " + args[1] + " byla ";
 		try {
 			ph.saveData(privs);
