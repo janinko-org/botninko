@@ -129,7 +129,7 @@ public class Commands {
 				if(cw == null) return;
 				Command c = (Command) cw.getPlugin();
 				if(c.getPrivLevel() <= priv){
-					c.handleCommand(new CommandMessageImpl(message, this, body));
+					c.handleCommand(new CommandMessageImpl(message, this, body.substring(command[0].length())));
 				}else if(logger.isInfoEnabled()){
 					logger.info("User " + from + " (priv " + priv + ") tried to do '" + message.getBody() + "' (priv " + c.getPrivLevel() + ")");
 				}
