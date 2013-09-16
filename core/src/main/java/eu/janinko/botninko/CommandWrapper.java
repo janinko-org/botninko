@@ -1,6 +1,7 @@
 package eu.janinko.botninko;
 
 import eu.janinko.botninko.api.PluginHelper;
+import eu.janinko.botninko.api.Room;
 import eu.janinko.botninko.api.plugin.Plugin;
 import java.io.IOException;
 import java.util.HashSet;
@@ -125,5 +126,10 @@ class CommandWrapper implements PluginHelper {
 
 	Plugin getPlugin(){
 		return plugin;
+	}
+
+	@Override
+	public Room getRoom() {
+		return commands.getRoom();
 	}
 }

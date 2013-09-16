@@ -1,6 +1,7 @@
 package eu.janinko.botninko.api;
 
 import java.io.IOException;
+import java.util.Set;
 import java.util.TimerTask;
 
 /**
@@ -15,4 +16,7 @@ public interface PluginHelper {
 	public void startRepeatingTask(TimerTask task, long period);
 
 	public void sendPrivateMessage(String nick, String msg);
+
+	public Room getRoom();
+	public Set<String> getOnlineUsers();
 }
