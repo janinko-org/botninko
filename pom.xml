@@ -15,8 +15,22 @@
     </modules>
 
     <name>Botninko - XMPP bot for MUC</name>
-    <url>http://janinko.eu/botninko</url>
     <description>Bot for MultiUser Chat at XMPP protocol</description>
+    <url>http://janinko.eu/botninko</url>
+
+	 <licenses>
+		<license>
+			<name>GNU GENERAL PUBLIC LICENSE Version 2</name>
+			<url>http://www.gnu.org/licenses/gpl-2.0.html</url>
+			<distribution>repo</distribution>
+		</license>
+	 </licenses>
+
+    <scm>
+      <connection>scm:git:git://github.com/janinko-org/botninko.git</connection>
+      <developerConnection>scm:git:ssh://git@github.com:janinko-org/botninko.git</developerConnection>
+      <url>https://github.com/janinko-org/botninko</url>
+    </scm>
 
     <developers>
       <developer>
@@ -27,11 +41,6 @@
         <timezone>Europe/Prague</timezone>
       </developer>
     </developers>
-    <scm>
-      <connection>scm:git:git://github.com/janinko-org/botninko.git</connection>
-      <developerConnection>scm:git:ssh://git@github.com:janinko-org/botninko.git</developerConnection>
-      <url>https://github.com/janinko-org/botninko</url>
-    </scm>
 
     <issueManagement>
       <system>github</system>
