@@ -32,6 +32,21 @@ public class Connection {
 	public Connection() {
 	}
 
+	public void connect(int retry){
+		if(connected) return;
+		int r=0;
+		connect();
+		while(!connection.isConnected() && r++ < retry){
+			try {
+				Thread.sleep(1000 * r);
+			} catch (InterruptedException ex) {
+				logger.warn("Connecting interrupted.", ex);
+				return;
+			}
+			connect();
+		}
+	}
+
 	synchronized public void connect() {
 		if (connected) {
 			return;

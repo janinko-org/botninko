@@ -50,7 +50,7 @@ public class Bot {
 		commands.init();
 
 		if(!connection.isConnected()){
-			connection.connect();
+			connection.connect(5);
 		}
 
 		return r;
