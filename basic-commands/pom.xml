@@ -4,12 +4,12 @@
 
   <groupId>eu.janinko.botninko.plugins</groupId>
   <artifactId>basic-commands</artifactId>
-  <version>1.1-SNAPSHOT</version>
+  <version>1.1</version>
 
   <parent>
     <groupId>eu.janinko.botninko</groupId>
     <artifactId>botninko-parent</artifactId>
-    <version>1.1-SNAPSHOT</version>
+    <version>1.1</version>
   </parent>
 
   <name>Botninko - basic commands</name>
@@ -23,7 +23,7 @@
     <dependency>
       <groupId>eu.janinko.botninko</groupId>
       <artifactId>botninko-api</artifactId>
-      <version>1.1-SNAPSHOT</version>
+      <version>1.1</version>
     </dependency>
     <dependency>
       <groupId>log4j</groupId>
