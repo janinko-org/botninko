@@ -35,6 +35,7 @@ public class Commands {
 		plugins.setCommands(this);
 		conn.setCommands(this);
 		plugins.startPlugins();
+		plugins.loadPluginsFromConfigFile();
 	}
 
     /**

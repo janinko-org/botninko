@@ -7,6 +7,9 @@ import eu.janinko.botninko.api.plugin.MessageHandler;
 import eu.janinko.botninko.api.plugin.PresenceHandler;
 import eu.janinko.botninko.plugins.core.PluginManagerCommand;
 import eu.janinko.botninko.plugins.core.Privset;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -127,29 +130,17 @@ public class Plugins {
 		cw.destroy();
 	}
 	
-	/*public final void loadPluginsFromConfigFile(){
-		String path = PLUGIN_DIR + "plugins";
-		BufferedReader in=null;
-		try {
-			in = new BufferedReader(new FileReader(path));
+	final void loadPluginsFromConfigFile(){
+		String path = commands.getConfigDir() + "plugins";
+		try (BufferedReader in = new BufferedReader(new FileReader(path))){
 			String line;
 			while((line = in.readLine()) != null ){
-				loadPlugin(line);
+				startPlugin(line);
 			}
-		} catch (FileNotFoundException e) {
-			logger.error("Failed loading file", e);
 		} catch (IOException e) {
 			logger.error("Failed loading file", e);
-		}finally{
-			if(in != null){
-				try {
-					in.close();
-				} catch (IOException e) {
-					logger.error("Failed closing file", e);
-				}
-			}
 		}
-	}*/
+	}
 	
 	void connected(){
 		for(CommandWrapper cw : plugins){

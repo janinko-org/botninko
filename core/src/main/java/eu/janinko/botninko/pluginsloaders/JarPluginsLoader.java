@@ -94,7 +94,7 @@ public class JarPluginsLoader implements PluginsLoader {
 	@Override
 	public void reload() {
 		scanPluginFolder();
-		loadPlugins();
+		//loadPlugins();
 	}
 
 	private static class XmppmucClassLoader extends ClassLoader{
